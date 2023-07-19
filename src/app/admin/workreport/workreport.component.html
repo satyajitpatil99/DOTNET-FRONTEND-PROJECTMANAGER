@@ -1,0 +1,104 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>WorkReport</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">WorkReport </li>
+
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Employee</label>
+
+                <select [(ngModel)]="employeename" (change)="changed()" id="inputState" class="form-select">
+                    <option value="">...Select...</option>
+                    <option *ngFor="let employee of employees" value="{{employee.name}}">{{employee.name}}</option>
+
+                </select>
+            </div>
+            <br>
+                <div class="col-md-4">
+                    <label  for="inputState" class="form-label">Project</label>
+
+                    <select [(ngModel)]="projectname" (change)="changed()" id="inputState" class="form-select">
+                        <option value="">...Select...</option>
+                        <option *ngFor="let project of projects" value="{{project.name}}">{{project.name}}</option>
+
+
+                    </select>
+                </div>
+                <br>
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Status</label>
+
+                    <select [(ngModel)]="taskstatus" (change)="changed()" id="inputState" class="form-select">
+                        <option value="">...Select...</option>
+                        <option value="Complited">Completed</option>
+                        <option value="Pending">Pending</option>
+                        
+
+                    </select>
+                </div>
+                <br>
+                <div class="col-md-4 mt-4">
+                    <label for="inputState" class="form-label">Date</label>
+
+                    <mat-form-field>
+                       
+                        <mat-date-range-input [rangePicker]="picker">
+                          <input matStartDate placeholder="Start date">
+                          <input matEndDate placeholder="End date">
+                        </mat-date-range-input>
+                        
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                      </mat-form-field>
+                      
+                </div> 
+
+                <div class="col-md-8 mt-5"> 
+                    <button class="btn btn-primary float-end me-3" (click)="exportexcel()">Excel</button>
+                    <button class="btn btn-danger float-end me-3" (click)='printDiv("printdiv")'>Print</button>
+                    <button class="btn btn-success float-end me-3" (click)="reset()">Reset</button>
+                </div>
+                <hr>
+                <div id="printdiv">
+                <table id="excel-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Project</th>
+                            <th>Employee</th>
+                            <th>Module</th>
+                            <th>Task</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                
+                <tbody>
+                    <tr *ngFor="let report of reportlist, let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{report.projectname }}</td>
+                        <td>{{report.employeename}}</td>
+                        <td>{{report.modulename }}</td>
+                        <td>{{report.taskname }}</td>
+                        <td>{{report.taskstatus }}</td>
+
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->

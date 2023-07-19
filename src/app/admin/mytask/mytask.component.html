@@ -1,0 +1,69 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>MyTask</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">MyTask
+  
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+  
+  <!-- <form>
+    <div class="col-md-12">
+      <label for="inputEmail4" class="form-label">Project:</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="project">
+    </div>
+    <br>
+    <div class="col-md-12">
+      <label for="inputPassword4" class="form-label">ModuleId:</label>
+      <input type="password" class="form-control" id="inputPassword4" formControlName="Code">
+    </div>
+    <br>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">ProjectTask:</label>
+      <input type="email" class="form-control" id="inputAddress2" formControlName="Eamil">
+    </div>
+    <br>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </form> -->
+</div>
+
+<br>
+  <hr>
+     <div class="row">
+        <table>
+            <tr class="">
+                <th>SrNo</th>
+                <th>Project</th>
+                <th>ModuleName</th>
+                <th>ProjectTask</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let mytask of mytasks; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{mytask.project.name}}</td>
+                <td>{{mytask.module.name}}</td>
+                <td>{{mytask.task}}</td>
+                <td>{{mytask.status}}</td>
+                <td>
+
+                    <button class="btn btn-primary" *ngIf="mytask.status !='Pending'" (click)="Open(mytask.id)">Open</button>
+                    <button class="btn btn-danger" *ngIf="mytask.status !='Complited'" (click)="Close(mytask.id)">Close</button>
+                  </td>
+
+                
+            </tr>
+        </table>
+    </div>
+    </section>
+  </main>
+  

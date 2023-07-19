@@ -1,0 +1,63 @@
+
+<main id="main" class="main" *ngIf="project">
+
+    <div class="pagetitle">
+      <h1>ProjectModule:{{project.name}}</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">ProjectModule
+  
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+  
+  <form class="row g-3" [formGroup]="formData"  (ngSubmit)="submitData(formData.value)">
+    <!-- <div class="col-md-12">
+      <label for="inputEmail4" class="form-label">ProjectId:</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="projectid">
+    </div> -->
+    <br>
+    <div class="col-md-12">
+        <label for="inputEmail4" class="form-label">Name:</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="name">
+    </div>
+    <br>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+    <br>
+  </form>
+</div>
+
+<br>
+  <hr>
+     <div class="row">
+        <table>
+            <tr class="">
+                <th>SrNo</th>
+                <th>ProjectId</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let Projectmodule of ProjectModules; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{Projectmodule.projectid}}</td>
+                <td>{{Projectmodule.name}}</td>
+                <td>
+
+                    <button class="btn btn-primary" (click)="EditItem(Projectmodule.id)">Edit</button>&nbsp;
+                    <button (click)="deleteProduct(Projectmodule.id)" class="btn btn-danger">delete</button>&nbsp;
+                    <button class="btn btn-primary" routerLink="projecttask/{{Projectmodule.id}}">Tasks</button>
+                  </td>
+
+                
+            </tr>
+        </table>
+    </div>
+    </section>
+  </main>
+  

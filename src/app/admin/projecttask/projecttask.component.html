@@ -1,0 +1,142 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>ProjectTask:{{project.name}}</h1>
+      
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">ProjectTask
+  
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+  
+  <form class="row g-3" [formGroup]="formData"  (ngSubmit)="submitData(formData.value)">
+    <h1>ProjectModule:{{module.name}}</h1>
+    <!-- <div class="col-md-12">
+      <label for="inputEmail4" class="form-label">ProjectId:</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="projectid">
+    </div>
+    <br>
+    <div class="col-md-12">
+      <label for="inputPassword4" class="form-label">ModuleId:</label>
+      <input type="password" class="form-control" id="inputPassword4" formControlName="moduleid">
+    </div> -->
+    <br>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Task:</label>
+      <input type="email" class="form-control" id="inputAddress2" formControlName="task">
+    </div>
+    <br>
+    <div class="col-md-12">
+        <label for="comment">Descripton:</label>
+        <textarea class="form-control" rows="5" id="comment" formControlName="description" name="text"></textarea>
+    </div>
+    <br>
+    <!-- <div class="col-md-12">
+      <label for="inputCity" class="form-label">EmployeeId:</label>
+      <input type="text" class="form-control" id="inputCity" formControlName="employeid">
+    </div> -->
+    <br>
+    <!-- <div class="col-12">
+        <label for="inputAddress2" class="form-label">StaratDate:</label>
+        <input type="date" class="form-control" id="inputAddress2" formControlName="startdate">
+      </div> -->
+      <div class="col-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>StaratDate</mat-label>
+          <input matInput [matDatepicker]="startdatepicker" formControlName="startdate">
+          <mat-datepicker-toggle matIconSuffix [for]="startdatepicker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #startdatepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <br>
+      <div class="col-12">
+        <label for="inputAddress2" class="form-label">StaratTime:</label>
+        <input type="time" class="form-control" id="inputAddress2" formControlName="starttime">
+      </div>
+      <br>
+      <!-- <div class="col-md-12">
+        <label for="inputCity" class="form-label">EndtDate:</label>
+        <input type="date" class="form-control" id="inputCity" formControlName="enddate">
+      </div> -->
+      <div class="col-md-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>EndDate</mat-label>
+          <input matInput [matDatepicker]="enddatepicker" formControlName="enddate">
+          <mat-datepicker-toggle matIconSuffix [for]="enddatepicker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #enddatepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <br>
+      <div class="col-md-12">
+        <label for="inputCity" class="form-label">EndTime:</label>
+        <input type="time" class="form-control" id="inputCity" formControlName="endtime">
+      </div>
+      <br>
+    <div class="col-md-12">
+      <label for="inputZip" class="form-label">Duration:</label>
+      <input type="text" class="form-control" id="inputZip" formControlName="duration">
+    </div>
+    <br>
+    <div class="col-md-12">
+        <label for="inputZip" class="form-label">Status:</label>
+        <select type="text" class="form-control" id="inputZip" formControlName="status">
+          <option value="Complited">Completed</option>
+          <option value="Pending">Pending</option>
+          </select>
+      </div>
+      <br>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </form>
+</div>
+
+<br>
+  <hr>
+     <div class="row">
+        <table>
+            <tr>
+                <th>SrNo</th>
+                <th>Task</th>
+                <th>Descripton</th>
+                <th>StaratDate</th>
+                <th>StaratTime</th>
+                <th>EndtDate</th>
+                <th>EndTime</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let projecttask of projecttasks; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{projecttask.task}}</td>
+                <td>{{projecttask.description}}</td>
+                <td>{{projecttask.startdate | date:"dd/MM/yyyy"}}</td>
+                <td>{{projecttask.starttime}}</td>
+                <td>{{projecttask.enddate | date:"dd/MM/yyyy"}}</td>
+                <td>{{projecttask.endtime}}</td>
+                <td>{{projecttask.duration}}</td>
+                <td>{{projecttask.status}}</td>
+                <td>
+
+                    <button class="btn btn-primary" (click)="EditItem(projecttask.id)">Edit</button>
+                    <button (click)="deleteProduct(projecttask.id)" class="btn btn-danger">delete</button>
+                  </td>
+
+                
+            </tr>
+        </table>
+    </div>
+    </section>
+  </main>
+  

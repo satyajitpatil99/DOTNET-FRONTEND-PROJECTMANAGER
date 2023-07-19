@@ -1,0 +1,88 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Employees</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Employees
+  
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+  
+  <form class="row g-3"  [formGroup]="formData" (ngSubmit)="submitData(formData.value)">
+    <div class="col-md-12">
+      <label for="inputEmail4" class="form-label">Name:</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="Name">
+    </div>
+    <div class="col-md-12">
+      <label for="inputPassword4" class="form-label">Code:</label>
+      <input type="password" class="form-control" id="inputPassword4" formControlName="Code">
+    </div>
+    <div class="col-md-12">
+      <label for="inputState" class="form-label">Gender:</label>
+      <select id="inputState" class="form-select" formControlName="Gender">
+        <option selected>Choose...</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="inputAddress2" formControlName="Eamil">
+    </div>
+    <div class="col-md-12">
+      <label for="inputCity" class="form-label">Mobile No:</label>
+      <input type="text" class="form-control" id="inputCity" formControlName="MobileNo">
+    </div>
+  
+    <div class="col-md-12">
+      <label for="inputZip" class="form-label">Password:</label>
+      <input type="password" class="form-control" id="inputZip" formControlName="Password">
+    </div>
+  
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </form>
+</div>
+
+<br>
+  <hr>
+     <div class="row">
+        <table>
+            <tr class="">
+                <th>SrNo</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+                <th>Password</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let employee of employees; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.code}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.eamil}}</td>
+                <td>{{employee.mobileno}}</td>
+                <td>{{employee.password}}</td>
+                <td>
+
+                    <button class="btn btn-primary" (click)="EditItem(employee.id)">Edit</button>
+                    <button (click)="deleteProduct(employee.id)" class="btn btn-danger">delete</button>
+                  </td>
+
+                
+            </tr>
+        </table>
+    </div>
+    </section>
+  </main>
+  
